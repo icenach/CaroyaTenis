@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/galeria"
+            android:icon="@drawable/picture"
+            android:title="Galeria" />
+        <item
+            android:id="@+id/ranking"
+            android:icon="@drawable/podium"
+            android:title="Ranking" />
+        <item
+            android:id="@+id/draws"
+            android:icon="@drawable/tournament"
+            android:title="Cuadros" />
+        <item
+            android:id="@+id/calendario"
+            android:icon="@drawable/calendario"
+            android:title="Calendario" />
+    </group>
+
+    <item android:title="Personal">
+        <menu>
+            <item
+                android:id="@+id/perfil"
+                android:icon="@drawable/perfil"
+                android:title="Perfin" />
+            <item
+                android:id="@+id/mensaje"
+                android:icon="@drawable/mensaje"
+                android:title="Mensaje" />
+        </menu>
+    </item>
+
+</menu>

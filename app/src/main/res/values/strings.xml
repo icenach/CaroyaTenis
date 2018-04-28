@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Caroya Tenis</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="facebook_app_id">1730052767301216</string>
+    <string name="fb_login_protocol_scheme">fb1730052767301216</string>
+
+    <string name="action_settings">Cerrar Secion</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="cancel_login">Se canceló la operación</string>
+    <string name="error_login">Ocurrió un error al ingresar</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="firebase_error_login">Error al iniciar sesión en Firebase</string>
+    <string name="galeria">Galeria</string>
+</resources>

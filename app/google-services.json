@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "521860857088",
+    "firebase_url": "https://circuto-amateur-de-tenis.firebaseio.com",
+    "project_id": "circuto-amateur-de-tenis",
+    "storage_bucket": "circuto-amateur-de-tenis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521860857088:android:c6b649f1ebe5ea43",
+        "android_client_info": {
+          "package_name": "com.example.icena.caroyatenis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "521860857088-kj9ehlolll9065gu4uanvqq0v43hkrek.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.icena.caroyatenis",
+            "certificate_hash": "5febb6baf81e0c86bbfa34c77e354321bf0d176c"
+          }
+        },
+        {
+          "client_id": "521860857088-ohch9vrknf9grrphb1j5jhprfhld7jfj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDC1-i9E33jyCz39QQ349uHiWtMYStB5IU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "521860857088-ohch9vrknf9grrphb1j5jhprfhld7jfj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

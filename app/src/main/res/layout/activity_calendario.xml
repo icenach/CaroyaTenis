@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context="practice.myapplication.main">
+
+        <TextView
+            android:id="@+id/yLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+
+
+        <TextView
+            android:id="@+id/mLabel"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="July"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+
+
+        <TextView
+            android:id="@+id/dLabel"
+            android:layout_width="220dp"
+            android:layout_height="200dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/colorLetra"
+            android:textSize="100sp" />
+
+
+        <TextView
+            android:id="@+id/eLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="-40dp"
+            android:text="Sun"
+            android:textColor="#206757"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtCalendarioTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="TEXTO PRIMARIO TITULO"
+            android:textColor="@color/colorLetra"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtCalendaroContenido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="TEXTO DE CONTENIDO..."
+            android:textColor="@color/colorLetra"
+            android:textSize="17sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+
+</LinearLayout>
