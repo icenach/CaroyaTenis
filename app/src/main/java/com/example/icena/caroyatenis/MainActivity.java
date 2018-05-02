@@ -1,6 +1,7 @@
 package com.example.icena.caroyatenis;
 
 import android.content.Intent;
+import android.media.session.MediaSession;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -10,6 +11,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,15 +27,28 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class MainActivity extends AppCompatActivity
@@ -43,7 +58,12 @@ public class MainActivity extends AppCompatActivity
     private ViewPager mViewPager;
 
     public FirebaseUser user;
-    FirebaseDatabase database;
+    DatabaseReference mDataBaseReference;
+    ValueEventListener mValueEventtListener;
+    public   ImageView photoImageView;
+
+    private String stringFoto;
+    private CallbackManager callbackManager;
 
 
     @Override
@@ -83,6 +103,8 @@ public class MainActivity extends AppCompatActivity
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        // Hago referencia a la Base de datos INSTANCIANDO el objeto DatabeseReference (https://circuto-amateur-de-tenis.firebaseio.com/)
+        mDataBaseReference = FirebaseDatabase.getInstance().getReference();
 
         ///////////////////////////// inicio de secion ///////////////////////////////
 
@@ -99,11 +121,66 @@ public class MainActivity extends AppCompatActivity
             String mail = user.getEmail();
             txtMail.setText(mail);
 
-            ImageView photoImageView = (ImageView) headerView.findViewById(R.id.photoImageView);
+            /////////////////////////////////////////////////////////////////////////////////////
+
+            Bundle inBundle = getIntent().getExtras();
+            Log.e("dato:", inBundle + "");
+            if(inBundle != null) {
+                stringFoto = inBundle.getString("imageUrl");
+
+                // me devuelve el id del nodo donde lo coloque
+                //String id = mDataBaseReference.push().getKey();
+
+                if (stringFoto != null){
+                    Usuario usuarioFoto = new Usuario(user.getDisplayName(), stringFoto);
+                    mDataBaseReference.child("usuario").child(user.getUid()).setValue(usuarioFoto);
+
+                }else{
+
+                    //mDataBaseReference = FirebaseDatabase.getInstance().getReference().child(user.getDisplayName());
+
+                    mDataBaseReference.child("usuario").child(user.getUid()).addValueEventListener (new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Usuario Foto = dataSnapshot.getValue(Usuario.class);
+                            Log.e("datos usuario:", Foto + "");
+
+                            if (Foto != null){
+                            stringFoto = Foto.getFoto();
+                                Glide.with(getApplicationContext())
+                                        .load(stringFoto)
+                                        .into(photoImageView);
+                            }else{
+                                Toast.makeText(getApplicationContext(), "No tiene Foto para mostrar", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                    //mDataBaseReference.addValueEventListener(mValueEventtListener);
+                    //Toast.makeText(getApplicationContext(), "No tiene Foto para mostrar", Toast.LENGTH_LONG).show();
+                }
+
+                photoImageView = (ImageView) headerView.findViewById(R.id.photoImageView);
+                //Picasso.with(MainActivity.this).load(stringFoto).into(photoImageView);
+
+                Glide.with(getApplicationContext())
+                        .load(stringFoto)
+                        .into(photoImageView);
+            }
+
+
+            /////////////////////////////////////////////////////////////////////////////////////
+
+
+            /*ImageView photoImageView = (ImageView) headerView.findViewById(R.id.photoImageView);
             Uri photoUrl = user.getPhotoUrl();
             Glide.with(getApplicationContext())
                     .load(photoUrl)
-                    .into(photoImageView);
+                    .into(photoImageView);*/
 
 
         } else {
