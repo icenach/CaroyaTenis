@@ -8,14 +8,16 @@ public class Usuario {
 
     public String user;
     public String foto;
+    public String mail;
 
     public Usuario() {
 
     }
 
-    public Usuario(String user, String foto) {
+    public Usuario(String user, String foto, String mail) {
         this.user = user;
         this.foto = foto;
+        this.mail = mail;
     }
 
     public String getUser() {
@@ -32,5 +34,13 @@ public class Usuario {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public String gerMail() {
+        return mail;
+    }
+
+    public void setMail(String mail){
+        this.mail = mail;
     }
 }

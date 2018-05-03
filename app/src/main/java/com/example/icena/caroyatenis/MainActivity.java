@@ -132,7 +132,10 @@ public class MainActivity extends AppCompatActivity
                 //String id = mDataBaseReference.push().getKey();
 
                 if (stringFoto != null){
-                    Usuario usuarioFoto = new Usuario(user.getDisplayName(), stringFoto);
+                    // creo un Objeto Usuario y le paso los parametros user, foto y mail
+                    Usuario usuarioFoto = new Usuario(user.getDisplayName(), stringFoto, user.getEmail());
+                    // con el DBReference me posiciono en el Nodo Usuario de FB, genero un ID de ususario
+                    // y escribo los campos del Objeto Usuario
                     mDataBaseReference.child("usuario").child(user.getUid()).setValue(usuarioFoto);
 
                 }else{
